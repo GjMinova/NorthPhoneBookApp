@@ -1,5 +1,8 @@
 package com.north.phonebook.app.common.error;
 
+/**
+ * Error Response.
+ */
 public class ErrorResponse {
 
     private final String errorCode;

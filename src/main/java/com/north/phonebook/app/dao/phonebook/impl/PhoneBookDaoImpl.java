@@ -1,7 +1,7 @@
 package com.north.phonebook.app.dao.phonebook.impl;
 
 import com.north.phonebook.app.dao.phonebook.PhoneBookDao;
-import com.north.phonebook.app.entity.PhoneBook;
+import com.north.phonebook.app.model.entity.PhoneBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,30 +13,36 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class PhoneBookDaoImpl implements PhoneBookDao {
 
     private final EntityManager entityManager;
 
+
     @Autowired
     public PhoneBookDaoImpl(final EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    @Override
-    public List<PhoneBook> findContacts(String name, String phoneNumber) {
-//        final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-//        final CriteriaQuery<PhoneBook> cq = cb.createQuery(PhoneBook.class);
-//        Root<PhoneBook> root = cq.from(PhoneBook.class);
-//        final List<Predicate> predicateList = new ArrayList<>();
-//        name.ifPresent(value -> predicateList.add(cb.like(root.get("name"), value)));
-//        phoneNumber.ifPresent(value -> predicateList.add(cb.equal(root.get("phoneNumber"), value)));
-//        cq.select(root).where(predicateList.toArray(new Predicate[0]));
-//        final Query query = entityManager.createQuery(cq);
-//        return query.getResultList();
+    public List<PhoneBook> findContacts(final String name, final String phoneNumber) {
+        final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<PhoneBook> cq = cb.createQuery(PhoneBook.class);
+        Root<PhoneBook> root = cq.from(PhoneBook.class);
+        final List<Predicate> predicateList = new ArrayList<>();
+        if (name != null) {
+            predicateList.add(cb.like(cb.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
+        }
+        if (phoneNumber != null) {
+            predicateList.add(cb.equal(root.get("phoneNumber"), phoneNumber));
+        }
+        cq.select(root).where(predicateList.toArray(new Predicate[0]));
+        final Query query = entityManager.createQuery(cq);
+        return query.getResultList();
+    }
 
-        return null;
+    @Override
+    public void createContact(final PhoneBook phoneBook) {
+        entityManager.persist(phoneBook);
     }
 }

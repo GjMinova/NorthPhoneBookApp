@@ -1,8 +1,8 @@
 package com.north.phonebook.app.service.phonebook.impl;
 
 import com.north.phonebook.app.dao.phonebook.PhoneBookDao;
-import com.north.phonebook.app.entity.PhoneBook;
-import com.north.phonebook.app.model.PhoneBookDTO;
+import com.north.phonebook.app.model.dto.PhoneBookDTO;
+import com.north.phonebook.app.model.entity.PhoneBook;
 import com.north.phonebook.app.service.phonebook.PhoneBookService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,9 +10,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PhoneBookServiceImpl implements PhoneBookService {
@@ -35,6 +35,19 @@ public class PhoneBookServiceImpl implements PhoneBookService {
         final List<PhoneBookDTO> phoneBookDTOS = new ArrayList<>();
         final List<PhoneBook> phoneBook = phoneBookDao.findContacts(name, phoneNumber);
         phoneBook.forEach(pB -> phoneBookDTOS.add(modelMapper.map(pB, PhoneBookDTO.class)));
+
+        logger.info("Successfully returned phonebook contacts. Number of records: {}.", phoneBookDTOS.size());
         return phoneBookDTOS;
+    }
+
+    @Transactional
+    @Override
+    public void createContact(final PhoneBookDTO phoneBookDTO) {
+
+        logger.info("Create phonebook contact with data: {}", phoneBookDTO);
+
+        phoneBookDao.createContact(modelMapper.map(phoneBookDTO, PhoneBook.class));
+
+        logger.info("Successfully created phonebook contact");
     }
 }

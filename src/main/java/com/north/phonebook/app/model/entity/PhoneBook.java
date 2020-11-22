@@ -1,4 +1,4 @@
-package com.north.phonebook.app.entity;
+package com.north.phonebook.app.model.entity;
 
 import javax.persistence.*;
 
