@@ -77,11 +77,12 @@ Try to insert some wrong format of the phoneNumber or null or empty value for na
 }
 
 * Expected result: HttpStatus 400 BAD Request 
+
 Payload:
-* {
-	"errorCode": "INVALID_PAYLOAD",
-	"errorMessage": "field_name"
-}
+	{
+		"errorCode": "INVALID_PAYLOAD",
+		"errorMessage": "field_name"
+	}
 
 
 GET METHOD: Search phonebook contacts 
