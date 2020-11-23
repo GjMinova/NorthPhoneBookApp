@@ -61,7 +61,7 @@ Try to insert some wrong format of the phoneNumber or null or empty value for na
 	"name": "",
 	"phoneNumber": "++38976668498"
 }
-{
+* {
 	"name": "",
 	"phoneNumber": "+38976668498"
 }
