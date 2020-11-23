@@ -22,6 +22,7 @@ There are two request methods, GET and POST
 Test scenarios
 
 POST Mehotd: Create new phonebook contact 
+
 - In postman choose POST method and use the following url:
 http://localhost:8080/phonebook/contacts
 with body JSON type: (one by one)
@@ -80,6 +81,7 @@ Payload:
 	"errorCode": "INVALID_PAYLOAD",
 	"errorMessage": "field_name"
 }
+
 
 GET Method: Search phonebook contacts 
 - In postman choose GET method and use the following url: http://localhost:8080/phonebook/contacts?name=Test&phoneNumber=1234563.
