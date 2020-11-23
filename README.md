@@ -21,7 +21,7 @@ There are two request methods, GET and POST
 
 Test scenarios
 
-POST Mehotd: Create new phonebook contact 
+POST METHOD: Create new phonebook contact 
 
 - In postman choose POST method and use the following url:
 http://localhost:8080/phonebook/contacts
@@ -83,7 +83,7 @@ Payload:
 }
 
 
-GET Method: Search phonebook contacts 
+GET METHOD: Search phonebook contacts 
 - In postman choose GET method and use the following url: http://localhost:8080/phonebook/contacts?name=Test&phoneNumber=1234563.
 
 We can make search with the two parameters, with name parameter only or with the phoneNumber parameter only 
@@ -91,44 +91,44 @@ We can make search with the two parameters, with name parameter only or with the
 Search filter by name and phoneNumber
 http://localhost:8080/phonebook/contacts?name=And&phoneNumber=%38976896541
 * Expected result: should return only one record 
-[
-    {
-        "name": "Brandy",
-        "phoneNumber": "+38976896541"
-    }
-]
+	- [
+	    {
+		"name": "Brandy",
+		"phoneNumber": "+38976896541"
+	    }
+	]
 
 Search filter by name 
 http://localhost:8080/phonebook/contacts?name=And
 * Expected result: list of founded records
-[
-    {
-        "name": "Andrea",
-        "phoneNumber": "+38971456987"
-    },
-    {
-        "name": "Ferdinand",
-        "phoneNumber": "+38971456987"
-    },
-    {
-        "name": "Brandy",
-        "phoneNumber": "+38976896541"
-    }
-]
+	- [
+	    {
+		"name": "Andrea",
+		"phoneNumber": "+38971456987"
+	    },
+	    {
+		"name": "Ferdinand",
+		"phoneNumber": "+38971456987"
+	    },
+	    {
+		"name": "Brandy",
+		"phoneNumber": "+38976896541"
+	    }
+	]
 
 Search filter by phoneNumber
 http://localhost:8080/phonebook/contacts?phoneNumber=%2B38971456987
 * Expected result:
-[
-    {
-        "name": "Andrea",
-        "phoneNumber": "+38971456987"
-    },
-    {
-        "name": "Ferdinand",
-        "phoneNumber": "+38971456987"
-    }
-]
+	- [
+	    {
+		"name": "Andrea",
+		"phoneNumber": "+38971456987"
+	    },
+	    {
+		"name": "Ferdinand",
+		"phoneNumber": "+38971456987"
+	    }
+	]
 
 If there is no result found, the following message is returned: No search result for the given search criteria
 
