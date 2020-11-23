@@ -16,7 +16,8 @@ To check the database, you need to open up H2 console. Navigate to: http://local
 	- User Name: admin
 	- Password: 
 
-In order to test the application, you can use Postman 
+In order to test the application, you can use Postman.
+
 There are two request methods, GET and POST
 
 Test scenarios
