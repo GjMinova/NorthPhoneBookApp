@@ -48,7 +48,7 @@ When inserting data, if it is successful, you should see message of type: "Succe
 There is validation on the name and phoneNumber.
 The name should not be null and phoneNumber has specific format
 
-Try to insert some worng format of the phoneNumber or null or empty value for name:
+Try to insert some wrong format of the phoneNumber or null or empty value for name:
 * {
 	"name": null,
 	"phoneNumber": "+38976668498"
@@ -83,6 +83,7 @@ Payload:
 
 GET Method: Search phonebook contacts 
 - In postman choose GET method and use the following url: http://localhost:8080/phonebook/contacts?name=Test&phoneNumber=1234563.
+
 We can make search with the two parameters, with name parameter only or with the phoneNumber parameter only 
 
 Search filter by name and phoneNumber

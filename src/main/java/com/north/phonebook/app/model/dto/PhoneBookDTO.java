@@ -11,7 +11,7 @@ public class PhoneBookDTO implements Serializable {
     @Size(min = 1)
     private String name;
 
-    @Pattern(regexp = "^[+]+[3][8][9][7][1256]+[0-9]{6}$")
+    @Pattern(regexp = "^[+][389]*[7][1256][0-9]{6}$")
     private String phoneNumber;
 
     public PhoneBookDTO() {
