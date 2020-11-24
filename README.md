@@ -9,14 +9,17 @@ Technologies that are used to implement this project are:
 * JUnit 
 * Postman (for testing)
 
-To check the database, you need to open up H2 console. Navigate to: http://localhost:8080/h2-console/
+1. To check the database, you need to open up H2 console. Navigate to: http://localhost:8080/h2-console/
 * Fill:
 	- Driver Class:org.h2.Driver
 	- JDBC URL:jdbc:h2:mem:phonebook_db
 	- User Name: admin
 	- Password: 
 
-In order to test the application, you can use Postman.
+2. The application is build as jar file. 
+To start the application, create JAR run configuration and pick up the builded jar file from target folder.
+
+3. To test the application, you can use Postman.
 
 There are two request methods, GET and POST
 
@@ -134,4 +137,4 @@ http://localhost:8080/phonebook/contacts?phoneNumber=%2B38971456987
 
 If there is no result found, the following message is returned: No search result for the given search criteria
 
-There are also some JUnit tests and integration tets that cover some of the functionalities.
+4. There are also some JUnit tests and integration tets that cover some of the functionalities.
